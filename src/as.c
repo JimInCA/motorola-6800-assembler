@@ -1,11 +1,27 @@
-char mapdn();
-char *alloc();
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "as.h"
+#include "output.h"
+#include "util.h"
+#include "ffwd.h"
+#include "do0.h"
+#include "ffwd.h"
+#include "pseudo.h"
+#include "symtab.h"
+
+void initialize(void);
+void make_pass(void);
+void re_init(void);
+void process(void);
+int parse_line(void);
+
 /*
- *	as ---	cross assembler main program
+	as ---	cross assembler main program
  */
-main(argc,argv)
-int	argc;
-char	**argv;
+int main(int argc, char *argv[])
 {
 	char	**np;
 	char	*i;
@@ -83,7 +99,7 @@ char	**argv;
 	exit(Err_count);
 }
 
-initialize()
+void initialize(void)
 {
 	FILE	*fopen();
 	int	i = 0;
@@ -115,7 +131,7 @@ initialize()
 	localinit();	/* target machine specific init. */
 }
 
-re_init()
+void re_init(void)
 {
 #ifdef DEBUG
 	printf("Reinitializing\n");
@@ -128,7 +144,7 @@ re_init()
 	fwdreinit();
 }
 
-make_pass()
+void make_pass(void)
 {
 	char	*fgets();
 
@@ -153,7 +169,7 @@ make_pass()
 /*
  *	parse_line --- split input line into label, op and operand
  */
-parse_line()
+int parse_line(void)
 {
 	register char *ptrfrm = Line;
 	register char *ptrto = Label;
@@ -192,7 +208,7 @@ parse_line()
 /*
  *	process --- determine mnemonic class and act on it
  */
-process()
+void process(void)
 {
 	register struct oper *i;
 	struct oper *mne_look();
@@ -215,4 +231,4 @@ process()
 		if(Cflag)Ctotal += Cycles;
 		}
 }
-
+

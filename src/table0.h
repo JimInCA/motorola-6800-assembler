@@ -113,4 +113,4 @@ struct oper table[] = {
 "txs",  INH,    53,     4,
 "wai",  INH,    62,     9
 };
-
+

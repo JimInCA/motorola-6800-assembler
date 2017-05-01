@@ -1,9 +1,11 @@
+
+
+#include "symtab.h"
+
 /*
  *      install --- add a symbol to the table
  */
-install(str,val)
-char    *str;
-int     val;
+int install(char *str, int val)
 {
         struct link *lp;
 	struct nlist *np,*p,*backp;
@@ -69,9 +71,7 @@ int     val;
 /*
  *      lookup --- find string in symbol table
  */
-struct nlist *
-lookup(name)
-char    *name;
+struct nlist *lookup(char *name)
 {
 	struct nlist *np;
 	int     i;
@@ -104,9 +104,7 @@ char    *name;
  *      Return pointer to an oper structure if found.
  *      Searches both the machine mnemonic table and the pseudo table.
  */
-struct oper *
-mne_look(str)
-char    *str;
+struct oper *mne_look(char *str)
 {
 	struct oper *low,*high,*mid;
 	int     cond;
@@ -139,3 +137,4 @@ char    *str;
 
 	return(NULL);
 }
+

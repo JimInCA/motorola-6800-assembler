@@ -12,17 +12,15 @@ SRCDIR   = src
 OBJDIR   = obj
 BINDIR   = bin
 
-SOURCES  := $(wildcard $(SRCDIR)/*.c)
-INCLUDES := $(wildcard $(SRCDIR)/*.h) ../../include/image_mapping.h
+SOURCES  := $(SRCDIR)/as.c $(SRCDIR)/do0.c $(SRCDIR)/pseudo.c $(SRCDIR)/eval.c
+SOURCES  += $(SRCDIR)/symtab.c  $(SRCDIR)/util.c $(SRCDIR)/ffwd.c $(SRCDIR)/output.c
+INCLUDES := $(SRCDIR)/as.h  $(SRCDIR)/table0.h
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 DIRS     := $(OBJDIR) $(BINDIR)
 
 all: directories $(BINDIR)/$(APP)
 
-$(SRCDIR)/first4kloader.h : ../spi_boot/bin/spi_boot.bin
-	./spi_boot_header_generator.py $< ./$@
-
-$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c $(INCLUDES)
+$(OBJECTS): $(OBJDIR)/%.o : $(SOURCES)
 	@$(CC) $(CFLAGS) -c -o $@ $<
 	@echo "Compiled "$<" successfully!"
 

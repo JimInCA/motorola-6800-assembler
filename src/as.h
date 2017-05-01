@@ -2,6 +2,9 @@
  *      machine independent definitions and global variables
  */
 
+#ifndef _AS_H_
+#define _AS_H_
+
 #define YES     1
 #define NO      0
 #define ERR     (-1)
@@ -122,3 +125,7 @@ struct  nlist *root;            /* root node of the tree */
   
 FILE    *Objfil =0;             /* object file's file descriptor*/
 char    Obj_name[] = {"             "};
+
+
+#endif // _AS_H_
+

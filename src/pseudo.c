@@ -2,6 +2,8 @@
  *      pseudo --- pseudo op processing
  */
 
+#include "pseudo.h"
+
 #define RMB     0       /* Reserve Memory Bytes         */
 #define FCB     1       /* Form Constant Bytes          */
 #define FDB     2       /* Form Double Bytes (words)    */
@@ -37,8 +39,7 @@ struct oper pseudo[] = {
 /*
  *      do_pseudo --- do pseudo op processing
  */
-do_pseudo(op)
-int op; /* which op */
+void do_pseudo(int op /* which op */)
 {
         char    fccdelim;
         int     j;
@@ -168,3 +169,4 @@ int op; /* which op */
                         fatal("Pseudo error");
                 }
 }
+

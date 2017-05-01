@@ -2,6 +2,8 @@
  *      file I/O version of forward ref handler
  */
 
+#include "ffwd.h"
+
 #define	FILEMODE	0644	/* file creat mode */
 #define	UPDATE		2	/* file open mode */
 #define	ABS		0	/* absolute seek */
@@ -12,7 +14,7 @@ char	Fwd_name[] = { "Fwd_refs" } ;
 /*
  *      fwdinit --- initialize forward ref file
  */
-fwdinit()
+void fwdinit(void)
 {
 	Forward = creat(Fwd_name,FILEMODE);
 	if(Forward <0)
@@ -29,7 +31,7 @@ fwdinit()
 /*
  *      fwdreinit --- reinitialize forward ref file
  */
-fwdreinit()
+void fwdreinit(void)
 {
 	F_ref   = 0;
 	Ffn     = 0;
@@ -44,7 +46,7 @@ fwdreinit()
 /*
  *      fwdmark --- mark current file/line as containing a forward ref
  */
-fwdmark()
+void fwdmark(void)
 {
 	write(Forward,&Cfn,sizeof(Cfn));
 	write(Forward,&Line_num,sizeof(Line_num));
@@ -53,7 +55,7 @@ fwdmark()
 /*
  *      fwdnext --- get next forward ref
  */
-fwdnext()
+void fwdnext(void)
 {
 	int stat;
 
@@ -72,3 +74,4 @@ fwdnext()
 	printf("Next Fwd ref: %d,%d\n",Ffn,F_ref);
 #endif
 }
+
