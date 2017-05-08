@@ -13,14 +13,14 @@ int emit(int byte);
 void f_record(void);
 void hexout(int byte);
 void print_line(void);
-void any(char c, char *str);
+int any(char c, char *str);
 char mapdn(char c);
-void lobyte(int i);
-void hibyte(int i);
-void head(char *str1, char *str2);
-void alpha(char c);
-void alphan(char c);
-void white(char c);
+int lobyte(int i);
+int hibyte(int i);
+int head(char *str1, char *str2);
+int alpha(char c);
+int alphan(char c);
+int white(char c);
 char *alloc(int nbytes);
 
 #endif // _UTIL_H_

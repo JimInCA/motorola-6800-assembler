@@ -1,6 +1,15 @@
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "symtab.h"
+#include "globals.h"
+#include "as.h"
+#include "pseudo.h"
+#include "util.h"
+#include "table0.h"
 
 /*
  *      install --- add a symbol to the table
@@ -97,7 +106,7 @@ struct nlist *lookup(char *name)
 
 
 #define NMNE (sizeof(table)/ sizeof(struct oper))
-#define NPSE (sizeof(pseudo)/ sizeof(struct oper))
+//#define NPSE (sizeof(pseudo)/ sizeof(struct oper)) JTN!!!!
 /*
  *      mne_look --- mnemonic lookup
  *
@@ -124,7 +133,7 @@ struct oper *mne_look(char *str)
 
 	/* Check for pseudo ops */
 	low =  &pseudo[0];
-	high = &pseudo[ NPSE-1 ];
+	//high = &pseudo[ NPSE-1 ];	JTN!!!
 	while (low <= high){
 		mid = low + (high-low)/2;
 		if( ( cond = strcmp(str,mid->mnemonic)) < 0)

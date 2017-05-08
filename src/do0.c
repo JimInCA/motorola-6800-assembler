@@ -3,6 +3,10 @@
  */
 
 #include "do0.h"
+#include "globals.h"
+#include "as.h"
+#include "util.h"
+#include "eval.h"
 
 /* addressing modes */
 #define IMMED	0	/* immediate */

@@ -1,5 +1,11 @@
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "util.h"
+#include "as.h"
+#include "globals.h"
 
 /*
  *      fatal --- fatal error handler
@@ -167,7 +173,7 @@ void print_line(void)
 /*
  *      any --- does str contain c?
  */
-void any(char c, char *str)
+int any(char c, char *str)
 {
 	while(*str != EOS)
 		if(*str++ == c)
@@ -188,7 +194,7 @@ char mapdn(char c)
 /*
  *      lobyte --- return low byte of an int
  */
-void lobyte(int i)
+int lobyte(int i)
 {
 	return(i&0xFF);
 }
@@ -196,7 +202,7 @@ void lobyte(int i)
 /*
  *      hibyte --- return high byte of an int
  */
-void hibyte(int i)
+int hibyte(int i)
 {
 	return((i>>8)&0xFF);
 }
@@ -204,7 +210,7 @@ void hibyte(int i)
 /*
  *      head --- is str2 the head of str1?
  */
-void head(char *str1, char *str2)
+int head(char *str1, char *str2)
 {
 	while( *str1 != EOS && *str2 != EOS){
 		if( *str1 != *str2 )break;
@@ -220,7 +226,7 @@ void head(char *str1, char *str2)
 /*
  *      alpha --- is character a legal letter
  */
-void alpha(char c)
+int alpha(char c)
 {
 	if( c<= 'z' && c>= 'a' )return(YES);
 	if( c<= 'Z' && c>= 'A' )return(YES);
@@ -232,7 +238,7 @@ void alpha(char c)
 /*
  *      alphan --- is character a legal letter or digit
  */
-void alphan(char c)
+int alphan(char c)
 {
 	if( alpha(c) )return(YES);
 	if( c<= '9' && c>= '0' )return(YES);
@@ -243,7 +249,7 @@ void alphan(char c)
 /*
  *	white --- is character whitespace?
  */
-void white(char c)
+int white(char c)
 {
 	if( c == TAB || c == BLANK || c == '\n' )return(YES);
 	return(NO);
@@ -254,7 +260,7 @@ void white(char c)
  */
 char *alloc(int nbytes)
 {
-	char *malloc();
+	//char *malloc(); JTN!!!
 
 	return(malloc(nbytes));
 }

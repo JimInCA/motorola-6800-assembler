@@ -3,6 +3,7 @@
  */
 
 #include "ffwd.h"
+#include "globals.h"
 
 #define	FILEMODE	0644	/* file creat mode */
 #define	UPDATE		2	/* file open mode */
