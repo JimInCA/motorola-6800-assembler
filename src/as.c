@@ -14,7 +14,7 @@
 
 /* global variables */
 int     Line_num =0;            /* current line number          */
-//int     Err_count =0;           /* total number of errors       */
+int     Err_count =0;           /* total number of errors       */
 char    Line[MAXBUF] = {0};     /* input line buffer            */
 char    Label[MAXLAB] = {0};    /* label on current line        */
 char    Op[MAXOP] = {0};        /* opcode mnemonic on current line      */

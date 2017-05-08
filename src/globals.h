@@ -8,9 +8,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-//extern char    *Optr;
+extern char    *Optr;
 extern int     Line_num;            /* current line number          */
-//extern int     Err_count;           /* total number of errors       */
+extern int     Err_count;           /* total number of errors       */
 extern char    Line[];     /* input line buffer            */
 extern char    Label[];    /* label on current line        */
 extern char    Op[];        /* opcode mnemonic on current line      */
