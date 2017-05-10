@@ -1,3 +1,7 @@
+
+#ifndef _TABLE1_H_
+#define _TABLE1_H_
+
 struct oper table[] = {
 "aba",  INH,    27,     2,
 "abx",  INH,    58,     3,      /* 6801 only */
@@ -124,3 +128,6 @@ struct oper table[] = {
 "txs",  INH,    53,     3,
 "wai",  INH,    62,     9
 };
+
+#endif // _TABLE1_H_
+

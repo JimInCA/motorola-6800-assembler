@@ -1,3 +1,7 @@
+
+#ifndef _TABLE9_H_
+#define _TABLE9_H_
+
 struct oper table[] = {
 /*
 MNE     CLASS   BASE    CYCLES */
@@ -145,3 +149,6 @@ MNE     CLASS   BASE    CYCLES */
 "tstb", INH,    93,     2
 
 };
+
+#endif // _TABLE9_H_
+

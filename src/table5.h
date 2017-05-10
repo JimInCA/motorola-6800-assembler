@@ -1,3 +1,7 @@
+
+#ifndef _TABLE5_H_
+#define _TABLE5_H_
+
 struct oper table[] = {
 "adc",  GEN,    0xA9,	2,
 "add",  GEN,    0xAB,	2,
@@ -90,3 +94,6 @@ struct oper table[] = {
 "txa",  INH,    0x9F,	2,
 "wait", INH,    0x8F,   2       /* CMOS only */
 };
+
+#endif // _TABLE5_H_
+

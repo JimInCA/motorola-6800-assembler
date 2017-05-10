@@ -1,3 +1,7 @@
+
+#ifndef _TABLE4_H_
+#define _TABLE4_H_
+
 struct oper table[] = {
 
 "add",  GEN,    0xE2,	0,
@@ -57,3 +61,6 @@ struct oper table[] = {
 "wait", INH,    0xB7,   0 
 
 };
+
+#endif // _TABLE4_H_
+

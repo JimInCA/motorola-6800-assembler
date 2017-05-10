@@ -14,6 +14,7 @@ BINDIR   = bin
 
 SOURCES  := $(SRCDIR)/as.c $(SRCDIR)/do0.c $(SRCDIR)/pseudo.c $(SRCDIR)/eval.c
 SOURCES  += $(SRCDIR)/symtab.c  $(SRCDIR)/util.c $(SRCDIR)/ffwd.c $(SRCDIR)/output.c
+SOURCES  += $(SRCDIR)/globals.c
 INCLUDES := $(SRCDIR)/as.h $(SRCDIR)/table0.h
 OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 DIRS     := $(OBJDIR) $(BINDIR)

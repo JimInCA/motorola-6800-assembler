@@ -1,3 +1,7 @@
+
+#ifndef _TABLE11_H_
+#define _TABLE11_H_
+
 struct oper table[] = {
 
 "aba",  INH,    0x1B,   2,
@@ -158,5 +162,5 @@ struct oper table[] = {
 
 };
 
-
+#endif // _TABLE11_H_
 
