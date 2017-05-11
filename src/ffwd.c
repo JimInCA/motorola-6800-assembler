@@ -17,16 +17,18 @@ char	Fwd_name[] = { "Fwd_refs" } ;
  */
 void fwdinit(void)
 {
+	/* JTN --- Need to rework all file i/o.
 	Forward = creat(Fwd_name,FILEMODE);
 	if(Forward <0)
 		fatal("Can't create temp file");
-	close(Forward); /* close and reopen for reads and writes */
+	close(Forward); // close and reopen for reads and writes
 	Forward = open(Fwd_name,UPDATE);
 	if(Forward <0)
 		fatal("Forward ref file has gone.");
 #ifndef DEBUG
 	unlink(Fwd_name);
 #endif
+	*/
 }
 
 /*
@@ -34,14 +36,16 @@ void fwdinit(void)
  */
 void fwdreinit(void)
 {
+	/* JTN --- Need to rework all file i/o.
 	F_ref   = 0;
 	Ffn     = 0;
-	lseek(Forward,0L,ABS);   /* rewind forward refs */
+	lseek(Forward,0L,ABS);   // rewind forward refs
 	read(Forward,&Ffn,sizeof(Ffn));
-	read(Forward,&F_ref,sizeof(F_ref)); /* read first forward ref into mem */
+	read(Forward,&F_ref,sizeof(F_ref)); // read first forward ref into mem
 #ifdef DEBUG
 	printf("First fwd ref: %d,%d\n",Ffn,F_ref);
 #endif
+	*/
 }
 
 /*
@@ -49,8 +53,10 @@ void fwdreinit(void)
  */
 void fwdmark(void)
 {
+	/* JTN --- Need to rework all file i/o.
 	write(Forward,&Cfn,sizeof(Cfn));
 	write(Forward,&Line_num,sizeof(Line_num));
+	*/
 }
 
 /*
@@ -58,6 +64,7 @@ void fwdmark(void)
  */
 void fwdnext(void)
 {
+	/* JTN --- Need to rework all file i/o.
 	int stat;
 
 	stat = read(Forward,&Ffn,sizeof(Ffn));
@@ -74,5 +81,6 @@ void fwdnext(void)
 #ifdef DEBUG
 	printf("Next Fwd ref: %d,%d\n",Ffn,F_ref);
 #endif
+	*/
 }
 

@@ -1,5 +1,6 @@
 
 #include "globals.h"
+#include "as.h"
 
 /* global variables */
 int     Line_num =0;            /* current line number          */
@@ -47,3 +48,4 @@ struct  nlist *root;            /* root node of the tree */
   
 FILE    *Objfil =0;             /* object file's file descriptor*/
 char    Obj_name[] = {"             "};
+
