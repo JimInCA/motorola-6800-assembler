@@ -88,7 +88,7 @@ int emit(int byte)
 	Pc++;
 	if(E_total == E_LIMIT)
 		f_record();
-	return(NO);	// JTN ???
+	return(NO);
 }
 
 /*
@@ -260,7 +260,7 @@ int white(char c)
  */
 char *alloc(int nbytes)
 {
-	//char *malloc(); JTN!!!
+	//char *malloc();	// This prototype is not needed.
 
 	return(malloc(nbytes));
 }
