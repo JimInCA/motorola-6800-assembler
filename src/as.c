@@ -7,7 +7,7 @@
 #include "output.h"
 #include "util.h"
 #include "ffwd.h"
-#include "do0.h"
+#include "do.h"
 #include "ffwd.h"
 #include "pseudo.h"
 #include "symtab.h"

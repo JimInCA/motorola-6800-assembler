@@ -2,15 +2,24 @@
  *      MC6801 specific processing
  */
 
+#include "do.h"
+#include "globals.h"
+#include "as.h"
+#include "util.h"
+#include "eval.h"
+
 /* addressing modes */
 #define IMMED   0       /* immediate */
 #define IND     1       /* indexed */
 #define OTHER   2       /* NOTA */
 
+static void do_indexed(int op);
+static void do_gen(int op, int mode);
+
 /*
  *      localinit --- machine specific initialization
  */
-localinit()
+void localinit(void)
 {
 }
 
@@ -20,9 +29,7 @@ localinit()
  *	Called with the base opcode and it's class. Optr points to
  *	the beginning of the operand field.
  */
-do_op(opcode,class)
-int opcode;	/* base opcode */
-int class;	/* mnemonic class */
+void do_op(int opcode /* base opcode */, int class /* mnemonic class */)	
 {
 	int     dist;   /* relative branch distance */
 	int     amode;  /* indicated addressing mode */
@@ -91,9 +98,7 @@ int class;	/* mnemonic class */
 /*
  *      do_gen --- process general addressing modes
  */
-do_gen(op,mode)
-int     op;
-int     mode;
+static void do_gen(int op, int mode)
 {
 	if( mode == IMMED){
 		Optr++;
@@ -143,8 +148,7 @@ int     mode;
 /*
  *      do_indexed --- handle all wierd stuff for indexed addressing
  */
-do_indexed(op)
-int op;
+static void do_indexed(int op)
 {
 	emit(op);
 	eval();

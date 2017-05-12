@@ -2,7 +2,7 @@
  *	MC6800/02 specific processing
  */
 
-#include "do0.h"
+#include "do.h"
 #include "globals.h"
 #include "as.h"
 #include "util.h"
@@ -12,6 +12,9 @@
 #define IMMED	0	/* immediate */
 #define IND	1	/* indexed */
 #define OTHER	2	/* NOTA */
+
+static void do_indexed(int op);
+static void do_gen(int op, int mode);
 
 /*
  *	localinit --- machine specific initialization
@@ -100,7 +103,7 @@ void do_op(int opcode /* base opcode */, int class /* mnemonic class */)
 /*
  *	do_gen --- process general addressing modes
  */
-void do_gen(int op, int mode)
+static void do_gen(int op, int mode)
 {
 	if( mode == IMMED){
 		Optr++;
@@ -150,7 +153,7 @@ void do_gen(int op, int mode)
 /*
  *	do_indexed --- handle all wierd stuff for indexed addressing
  */
-void do_indexed(int op)
+static void do_indexed(int op)
 {
 	emit(op);
 	eval();

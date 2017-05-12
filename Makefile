@@ -12,7 +12,7 @@ OBJDIR   = obj
 BINDIR   = bin
 
 CFLAGS  :=
-DEPS    := $(SRCDIR)/as.h $(SRCDIR)/table0.h
+DEPS    := $(SRCDIR)/as.h $(SRCDIR)/table0.h $(SRCDIR)/do.h
 OBJ     := $(OBJDIR)/as.o $(OBJDIR)/do0.o $(OBJDIR)/eval.o $(OBJDIR)/symtab.o
 OBJ     += $(OBJDIR)/util.o $(OBJDIR)/ffwd.o $(OBJDIR)/output.o $(OBJDIR)/pseudo.o
 OBJ     += $(OBJDIR)/globals.o
