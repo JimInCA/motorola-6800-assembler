@@ -2,6 +2,7 @@
 APP      = assembler
 
 CC       = gcc
+LINKER   = gcc -o
 RM       = rm -f
 MKDIR    = mkdir -p
 RMDIR    = rmdir
@@ -32,7 +33,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(DEPS)
 	@echo "Compiled "$@" successfully!"
 
 $(BINDIR)/$(APP): $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking complete!"
 
 clean:
