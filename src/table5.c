@@ -1,6 +1,5 @@
 
-#ifndef _TABLE5_H_
-#define _TABLE5_H_
+#include "table.h"
 
 struct oper table[] = {
 "adc",  GEN,    0xA9,	2,
@@ -95,5 +94,8 @@ struct oper table[] = {
 "wait", INH,    0x8F,   2       /* CMOS only */
 };
 
-#endif // _TABLE5_H_
+int sizeof_table(void)
+{
+	return sizeof(table);
+}
 

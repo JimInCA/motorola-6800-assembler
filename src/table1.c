@@ -1,6 +1,5 @@
 
-#ifndef _TABLE1_H_
-#define _TABLE1_H_
+#include "table.h"
 
 struct oper table[] = {
 "aba",  INH,    27,     2,
@@ -129,5 +128,8 @@ struct oper table[] = {
 "wai",  INH,    62,     9
 };
 
-#endif // _TABLE1_H_
+int sizeof_table(void)
+{
+	return sizeof(table);
+}
 

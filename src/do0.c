@@ -9,9 +9,9 @@
 #include "eval.h"
 
 /* addressing modes */
-#define IMMED	0	/* immediate */
-#define IND	1	/* indexed */
-#define OTHER	2	/* NOTA */
+#define IMMED	0       /* immediate */
+#define IND	    1       /* indexed */
+#define OTHER	2       /* NOTA */
 
 static void do_indexed(int op);
 static void do_gen(int op, int mode);

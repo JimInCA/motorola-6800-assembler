@@ -1,6 +1,5 @@
 
-#ifndef _TABLE9_H_
-#define _TABLE9_H_
+#include "table.h"
 
 struct oper table[] = {
 /*
@@ -99,8 +98,8 @@ MNE     CLASS   BASE    CYCLES */
 "leau", INDEXED,51,     2,
 "leax", INDEXED,48,     2,
 "leay", INDEXED,49,     2,
-"lsl",  GRP2,   8,	4,
-"lsla", INH,    72,	2,
+"lsl",  GRP2,   8,	    4,
+"lsla", INH,    72,	    2,
 "lslb", INH,    88,	2,
 "lsr",  GRP2,   4,	4,
 "lsra", INH,    68,	2,
@@ -117,17 +116,17 @@ MNE     CLASS   BASE    CYCLES */
 "pshu", RLIST,  54,     5,
 "puls", RLIST,  53,     5,
 "pulu", RLIST,  55,     5,
-"rol",  GRP2,   9,	4,
-"rola", INH,    73,	2,
-"rolb", INH,    89,	2,
-"ror",  GRP2,   6,	4,
-"rora", INH,    70,	2,
-"rorb", INH,    86,	2,
+"rol",  GRP2,   9,	    4,
+"rola", INH,    73,	    2,
+"rolb", INH,    89,	    2,
+"ror",  GRP2,   6,	    4,
+"rora", INH,    70,	    2,
+"rorb", INH,    86,	    2,
 "rti",  INH,    59,     15,
 "rts",  INH,    57,     5,
 "sbca", GEN,    130,	2,
 "sbcb", GEN,    194,	2,
-"sex",  INH,    29,	2,
+"sex",  INH,    29,	    2,
 "sta",  NOIMM,  135,    2,
 "stb",  NOIMM,  199,    2,
 "std",  NOIMM,  205,    3,
@@ -144,11 +143,13 @@ MNE     CLASS   BASE    CYCLES */
 "sync", INH,    19,     4,
 "sys",  SYS,    0,      19,
 "tfr",  RTOR,   31,     6,
-"tst",  GRP2,   13,	4,
-"tsta", INH,    77,	2,
+"tst",  GRP2,   13,	    4,
+"tsta", INH,    77,	    2,
 "tstb", INH,    93,     2
-
 };
 
-#endif // _TABLE9_H_
+int sizeof_table(void)
+{
+	return sizeof(table);
+}
 

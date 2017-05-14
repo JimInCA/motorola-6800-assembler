@@ -41,6 +41,11 @@ struct oper pseudo[] = {
 "zmb",  PSEUDO, ZMB,    0
 };
 
+int sizeof_pseudo(void)
+{
+	return sizeof(pseudo);
+}
+
 /*
  *      do_pseudo --- do pseudo op processing
  */

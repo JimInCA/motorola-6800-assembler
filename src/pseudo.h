@@ -7,6 +7,7 @@
 
 extern struct oper pseudo[];
 
+int sizeof_pseudo(void);
 void do_pseudo(int op /* which op */);
 
 #endif // _PSEUDO_H_

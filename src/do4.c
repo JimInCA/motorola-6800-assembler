@@ -2,6 +2,13 @@
  *      MC6804 specific processing
  */
 
+#include "do.h"
+#include "globals.h"
+#include "as.h"
+#include "util.h"
+#include "eval.h"
+#include "symtab.h"
+
 #define IMMED   0
 #define IND     1
 #define OTHER   2
@@ -13,10 +20,12 @@
 #define SD2REG  0x83
 #define ACCUM   0xFF
 
+static void mvi(int op, int to, int from);
+
 /*
  *      localinit --- machine specific initialization
  */
-localinit()
+void localinit(void)
 {
 	install("x",XREG);
 	install("X",XREG);
@@ -29,7 +38,7 @@ localinit()
 /*
  *      do_op --- process mnemonic
  */
-do_op(opcode,class)
+void do_op(int opcode /* base opcode */, int class /* mnemonic class */)
 {
 	int     dist;   /* relative branch distance */
 	int     amode;  /* indicated addressing mode */
@@ -178,8 +187,7 @@ do_op(opcode,class)
 		}
 }
 
-mvi(op,to,from)
-int op,to,from;
+static void mvi(int op, int to, int from)
 {
 	emit(op);
 	emit(to);

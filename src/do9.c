@@ -2,6 +2,12 @@
  *      MC6809 specific processing
  */
 
+#include "do.h"
+#include "globals.h"
+#include "as.h"
+#include "util.h"
+#include "eval.h"
+
 #define PAGE2	0x10
 #define PAGE3	0x11
 #define IPBYTE	0x9F	/* extended indirect postbyte */
@@ -31,10 +37,17 @@ int     rcycl[]= { 2,2, 2, 2, 2, 2,  0,0,1,1,1,1,0};
 #define INDIR   2       /* indirect */
 #define OTHER   3       /* NOTA */
 
+static void do_indexed(int op);
+static void abd_index(int pbyte);
+static int rtype(int r);
+static int set_mode(void);
+static int regnum(void);
+static void do_gen(int op, int mode);
+
 /*
  *      localinit --- machine specific initialization
  */
-localinit()
+void localinit(void)
 {
 }
 
@@ -44,14 +57,12 @@ localinit()
  *	Called with the base opcode and it's class. Optr points to
  *	the beginning of the operand field.
  */
-do_op(opcode,class)
-int opcode;	/* base opcode */
-int class;	/* mnemonic class */
+void do_op(int opcode /* base opcode */, int class /* mnemonic class */)
 {
-	int     dist;   /* relative branch distance */
-	int     src,dst;/* source and destination registers */
-	int     pbyte;  /* postbyte value */
-	int     amode;  /* indicated addressing mode */
+	int dist;      /* relative branch distance */
+	int src, dst;  /* source and destination registers */
+	int pbyte;     /* postbyte value */
+	int amode;     /* indicated addressing mode */
 	int	j;
 
 	amode = set_mode();     /* pickup indicated addressing mode */
@@ -284,9 +295,7 @@ int class;	/* mnemonic class */
 /*
  *      do_gen --- process general addressing mode stuff
  */
-do_gen(op,mode)
-int     op;
-int     mode;
+static void do_gen(int op, int mode)
 {
 	if( mode == IMMED){
 		Optr++;
@@ -349,8 +358,7 @@ int     mode;
 /*
  *      do_indexed --- handle all wierd stuff for indexed addressing
  */
-do_indexed(op)
-int op;
+static void do_indexed(int op)
 {
 	int     pbyte;
 	int     j,k;
@@ -522,8 +530,7 @@ int op;
  *      abd_index --- a,b or d indexed
  */
 
-abd_index(pbyte)
-int pbyte;
+static void abd_index(int pbyte)
 {
 	int     k;
 
@@ -537,8 +544,7 @@ int pbyte;
 /*
  *      rtype --- return register type in post-byte format
  */
-rtype(r)
-int r;
+static int rtype(int r)
 {
 	switch(r){
 	case RX:        return(0x00);
@@ -553,7 +559,7 @@ int r;
 /*
  *      set_mode --- determine addressing mode from operand field
  */
-set_mode()
+static int set_mode(void)
 {
 	register char *p;
 
@@ -573,7 +579,7 @@ set_mode()
 /*
  *      regnum --- return register number of *Optr
  */
-regnum()
+static int regnum(void)
 {
 	if( head(Optr,"D" ))return(RD);
 	if( head(Optr,"d" ))return(RD);

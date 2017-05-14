@@ -2,6 +2,12 @@
  *      MC68HC11 specific processing
  */
 
+#include "do.h"
+#include "globals.h"
+#include "as.h"
+#include "util.h"
+#include "eval.h"
+
 #define PAGE1   0x00
 #define PAGE2   0x18
 #define PAGE3   0x1A
@@ -14,12 +20,17 @@
 #define LIMMED  3       /* long immediate */
 #define OTHER   4
 
+static int bitop(int op, int mode, int class);
+static void do_gen(int op, int mode, int pnorm,int px,int py);
+static void do_indexed(int op);
+static void epage(int p);
+
 int     yflag = 0;      /* YNOIMM, YLIMM, and CPD flag */
 
 /*
  *      localinit --- machine specific initialization
  */
-localinit()
+void localinit(void)
 {
 }
 
@@ -29,9 +40,7 @@ localinit()
  *	Called with the base opcode and it's class. Optr points to
  *	the beginning of the operand field.
  */
-do_op(opcode,class)
-int opcode;	/* base opcode */
-int class;	/* mnemonic class */
+void do_op(int opcode /* base opcode */, int class /* mnemonic class */)
 {
 	int     dist;   /* relative branch distance */
 	int     amode;  /* indicated addressing mode */
@@ -160,10 +169,7 @@ int class;	/* mnemonic class */
 /*
  *      bitop --- adjust opcode on bit manipulation instructions
  */
-bitop(op,mode,class)
-int op;
-int mode;
-int class;
+static int bitop(int op, int mode, int class)
 {
 	if( mode == INDX || mode == INDY )
 		return(op);
@@ -178,14 +184,14 @@ int class;
 /*
  *      do_gen --- process general addressing modes
  */
-do_gen(op,mode,pnorm,px,py)
-int     op;     /* base opcode */
-int     mode;   /* addressing mode */
-int     pnorm;  /* page for normal addressing modes: IMM,DIR,EXT */
-int     px;     /* page for INDX addressing */
-int     py;     /* page for INDY addressing */
+static void do_gen(int op    /* base opcode */,
+                   int mode  /* addressing mode */,
+                   int pnorm /* page for normal addressing modes: IMM,DIR,EXT */,
+                   int px    /* page for INDX addressing */,
+                   int py    /* page for INDY addressing */)
 {
-	switch(mode){
+	switch(mode)
+    {
 	case LIMMED:
 		Optr++;
 		epage(pnorm);
@@ -249,8 +255,7 @@ int     py;     /* page for INDY addressing */
 /*
  *      do_indexed --- handle all wierd stuff for indexed addressing
  */
-do_indexed(op)
-int op;
+static void do_indexed(int op)
 {
 	char c;
 
@@ -269,9 +274,9 @@ int op;
 /*
  *      epage --- emit page prebyte
  */
-epage(p)
-int p;
+static void epage(int p)
 {
 	if( p != PAGE1 )        /* PAGE1 means no prebyte */
 		emit(p);
 }
+
