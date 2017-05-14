@@ -13,7 +13,9 @@ BINDIR     = bin
 
 CFLAGS    :=
 LFLAGS    :=
-DEPS      := $(SRCDIR)/as.h $(SRCDIR)/do.h
+DEPS      := $(SRCDIR)/as.h $(SRCDIR)/do.h $(SRCDIR)/eval.h $(SRCDIR)/globals.h
+DEPS      += $(SRCDIR)/pseudo.h $(SRCDIR)/table.h $(SRCDIR)/ffwd.h
+DEPS      += $(SRCDIR)/output.h $(SRCDIR)/symtab.h $(SRCDIR)/util.h
 OBJ_6800  := $(OBJDIR)/do0.o $(OBJDIR)/table0.o
 OBJ_6801  := $(OBJDIR)/do1.o $(OBJDIR)/table1.o
 OBJ_6804  := $(OBJDIR)/do4.o $(OBJDIR)/table4.o
