@@ -2,8 +2,12 @@
  *      file I/O version of forward ref handler
  */
 
+#include <unistd.h>
+#include <fcntl.h>
+
 #include "ffwd.h"
 #include "globals.h"
+#include "util.h"
 
 #define	FILEMODE	0644	/* file creat mode */
 #define	UPDATE		2	/* file open mode */
@@ -17,7 +21,6 @@ char	Fwd_name[] = { "Fwd_refs" } ;
  */
 void fwdinit(void)
 {
-	/* JTN --- Need to rework all file i/o.
 	Forward = creat(Fwd_name,FILEMODE);
 	if(Forward <0)
 		fatal("Can't create temp file");
@@ -28,7 +31,6 @@ void fwdinit(void)
 #ifndef DEBUG
 	unlink(Fwd_name);
 #endif
-	*/
 }
 
 /*
@@ -36,7 +38,6 @@ void fwdinit(void)
  */
 void fwdreinit(void)
 {
-	/* JTN --- Need to rework all file i/o.
 	F_ref   = 0;
 	Ffn     = 0;
 	lseek(Forward,0L,ABS);   // rewind forward refs
@@ -45,7 +46,6 @@ void fwdreinit(void)
 #ifdef DEBUG
 	printf("First fwd ref: %d,%d\n",Ffn,F_ref);
 #endif
-	*/
 }
 
 /*
@@ -53,10 +53,8 @@ void fwdreinit(void)
  */
 void fwdmark(void)
 {
-	/* JTN --- Need to rework all file i/o.
 	write(Forward,&Cfn,sizeof(Cfn));
 	write(Forward,&Line_num,sizeof(Line_num));
-	*/
 }
 
 /*
@@ -64,7 +62,6 @@ void fwdmark(void)
  */
 void fwdnext(void)
 {
-	/* JTN --- Need to rework all file i/o.
 	int stat;
 
 	stat = read(Forward,&Ffn,sizeof(Ffn));
@@ -81,6 +78,5 @@ void fwdnext(void)
 #ifdef DEBUG
 	printf("Next Fwd ref: %d,%d\n",Ffn,F_ref);
 #endif
-	*/
 }
 
