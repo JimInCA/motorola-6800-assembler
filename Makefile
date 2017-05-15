@@ -1,5 +1,5 @@
 
-APP        = assembler
+APP        = as
 
 CC         = gcc
 LINKER     = gcc -o
@@ -27,19 +27,19 @@ OBJ       += $(OBJDIR)/util.o $(OBJDIR)/ffwd.o $(OBJDIR)/output.o $(OBJDIR)/pseu
 OBJ       += $(OBJDIR)/globals.o
 DIRS      := $(OBJDIR) $(BINDIR)
 
-all: directories $(BINDIR)/$(APP)_6800 $(BINDIR)/$(APP)_6801 $(BINDIR)/$(APP)_6804 $(BINDIR)/$(APP)_6805 $(BINDIR)/$(APP)_6809 $(BINDIR)/$(APP)_6811
+all: directories $(BINDIR)/$(APP)0 $(BINDIR)/$(APP)1 $(BINDIR)/$(APP)4 $(BINDIR)/$(APP)5 $(BINDIR)/$(APP)9 $(BINDIR)/$(APP)11
 
-6800: directories $(BINDIR)/$(APP)_6800
+6800: directories $(BINDIR)/$(APP)0
 
-6801: directories $(BINDIR)/$(APP)_6801
+6801: directories $(BINDIR)/$(APP)1
 
-6804: directories $(BINDIR)/$(APP)_6804
+6804: directories $(BINDIR)/$(APP)4
 
-6805: directories $(BINDIR)/$(APP)_6805
+6805: directories $(BINDIR)/$(APP)5
 
-6809: directories $(BINDIR)/$(APP)_6809
+6809: directories $(BINDIR)/$(APP)9
 
-6811: directories $(BINDIR)/$(APP)_6811
+6811: directories $(BINDIR)/$(APP)11
 
 directories: $(DIRS)
 
@@ -53,27 +53,27 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 	@echo "Compiled "$@" successfully!"
 
-$(BINDIR)/$(APP)_6800: $(OBJ) $(OBJ_6800)
+$(BINDIR)/$(APP)0: $(OBJ) $(OBJ_6800)
 	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking "$@" complete!"
 
-$(BINDIR)/$(APP)_6801: $(OBJ) $(OBJ_6801)
+$(BINDIR)/$(APP)1: $(OBJ) $(OBJ_6801)
 	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking "$@" complete!"
 
-$(BINDIR)/$(APP)_6804: $(OBJ) $(OBJ_6804)
+$(BINDIR)/$(APP)4: $(OBJ) $(OBJ_6804)
 	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking "$@" complete!"
 
-$(BINDIR)/$(APP)_6805: $(OBJ) $(OBJ_6805)
+$(BINDIR)/$(APP)5: $(OBJ) $(OBJ_6805)
 	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking "$@" complete!"
 
-$(BINDIR)/$(APP)_6809: $(OBJ) $(OBJ_6809)
+$(BINDIR)/$(APP)9: $(OBJ) $(OBJ_6809)
 	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking "$@" complete!"
 
-$(BINDIR)/$(APP)_6811: $(OBJ) $(OBJ_6811)
+$(BINDIR)/$(APP)11: $(OBJ) $(OBJ_6811)
 	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking "$@" complete!"
 
