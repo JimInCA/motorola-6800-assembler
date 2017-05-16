@@ -36,7 +36,10 @@ int main(int argc, char *argv[])
 	  Argv = argv;
 	  initialize();
 	  while ((*argv[j] != '-') && (j<argc))
+	  {
 	   j++;
+	   if (j == argc) break;
+	  }
 	  N_files = j-1;
 	 if (j < argc )
 	  {
