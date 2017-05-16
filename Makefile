@@ -10,6 +10,7 @@ RMDIR      = rmdir
 SRCDIR     = src
 OBJDIR     = obj
 BINDIR     = bin
+TESTDIR    = test
 
 CFLAGS    :=
 LFLAGS    :=
@@ -78,7 +79,7 @@ $(BINDIR)/$(APP)11: $(OBJ) $(OBJ_6811)
 	@echo "Linking "$@" complete!"
 
 clean:
-	$(RM) $(OBJDIR)/*.o $(BINDIR)/$(APP)*
+	$(RM) $(OBJDIR)/*.o $(TESTDIR)/*.s19
 	@echo "Derived objects removed!"
 
 realclean: clean
