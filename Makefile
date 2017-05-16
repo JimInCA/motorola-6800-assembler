@@ -79,11 +79,11 @@ $(BINDIR)/$(APP)11: $(OBJ) $(OBJ_6811)
 	@echo "Linking "$@" complete!"
 
 clean:
-	$(RM) $(OBJDIR)/*.o $(TESTDIR)/*.s19
+	$(RM) $(OBJDIR)/*.o
 	@echo "Derived objects removed!"
 
 realclean: clean
-	@$(RM) $(BINDIR)/*
+	@$(RM) $(BINDIR)/* $(TESTDIR)/*.s19
 	@$(RMDIR) $(OBJDIR)
 	@$(RMDIR) $(BINDIR)
 	@echo "Binaries removed!"
