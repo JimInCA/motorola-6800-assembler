@@ -1,6 +1,7 @@
 *
 *	Copined from:
 *	MEK6802D5 Microcomputer Evaluation Board User's Manual
+*	Page 3-10
 *
 *	Assemble with the following command:
 * 	as0 help.asm -I cre c s

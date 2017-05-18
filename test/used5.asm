@@ -4,7 +4,7 @@
 *	    Page 3-8
 *
 *	    Assemble with the following command:
-*		as0 use_d5.asm -I cre c s
+*		as0 used5.asm -I cre c s
 *
         NAM     USED5
         OPT     c,cre
