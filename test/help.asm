@@ -7,9 +7,9 @@
 * 	as0 help.asm -L CRE C S
 *
 	NAM	HELP
-*   Options set in file override command line option settings.
-*	OPT	c			* options must be in lower case
-*	OPT cre			* one option per line
+*	Options set in file override command line option settings.
+*	OPT	c		* options must be in lower case
+*	OPT	cre		* one option per line
 	ORG	$0
 * D5 DEBUT ROUTINES
 DIDDLE	EQU	$F0A2
