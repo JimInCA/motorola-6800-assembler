@@ -4,10 +4,12 @@
 *	Page 3-10
 *
 *	Assemble with the following command:
-* 	as0 help.asm -I cre c s
+* 	as0 help.asm -L CRE C S
 *
 	NAM	HELP
-	OPT	c,cre
+*   Options set in file override command line option settings.
+*	OPT	c			* options must be in lower case
+*	OPT cre			* one option per line
 	ORG	$0
 * D5 DEBUT ROUTINES
 DIDDLE	EQU	$F0A2

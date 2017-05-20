@@ -4,10 +4,11 @@
 *	    Page 3-8
 *
 *	    Assemble with the following command:
-*		as0 used5.asm -I cre c s
+*		as0 used5.asm -l cre c s
 *
-        NAM     USED5
-        OPT     c,cre
+        nam     used5
+*       Options set in file override command line option settings
+*        opt     c       * options must be in lower case
         org     $0
 disbuf  equ     $e41d
 diddle  equ     $f0a2
