@@ -20,7 +20,7 @@ DEPS      += $(SRCDIR)/output.h $(SRCDIR)/symtab.h $(SRCDIR)/util.h
 OBJ_as0   := $(OBJDIR)/do0.o $(OBJDIR)/table0.o
 OBJ_as1   := $(OBJDIR)/do1.o $(OBJDIR)/table1.o
 OBJ_as4   := $(OBJDIR)/do4.o $(OBJDIR)/table4.o
-OBJ_as4   := $(OBJDIR)/do5.o $(OBJDIR)/table5.o
+OBJ_as5   := $(OBJDIR)/do5.o $(OBJDIR)/table5.o
 OBJ_as9   := $(OBJDIR)/do9.o $(OBJDIR)/table9.o
 OBJ_as11  := $(OBJDIR)/do11.o $(OBJDIR)/table11.o
 OBJ       := $(OBJDIR)/as.o $(OBJDIR)/eval.o $(OBJDIR)/symtab.o
@@ -36,7 +36,7 @@ as1: directories $(BINDIR)/$(APP)1
 
 as4: directories $(BINDIR)/$(APP)4
 
-as4: directories $(BINDIR)/$(APP)5
+as5: directories $(BINDIR)/$(APP)5
 
 as9: directories $(BINDIR)/$(APP)9
 
@@ -66,7 +66,7 @@ $(BINDIR)/$(APP)4: $(OBJ) $(OBJ_as4)
 	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking "$@" complete!"
 
-$(BINDIR)/$(APP)5: $(OBJ) $(OBJ_as4)
+$(BINDIR)/$(APP)5: $(OBJ) $(OBJ_as5)
 	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking "$@" complete!"
 
