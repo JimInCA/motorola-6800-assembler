@@ -1,5 +1,5 @@
 *
-*	    Copined from:
+*	    Copied from:
 *	    MEK6802D5 Microcomputer Evaluation Board User's Manual
 *	    Page 3-8
 *
