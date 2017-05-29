@@ -45,7 +45,7 @@ I've included a few programs written using the Motorola 6800 syntax.  The progra
 cd ./test
 ../bin/as0 used5.asm -l cre c s
 ```
-Using the above command, the output from the as0 assembler should look this:
+Using the above command, the output to the terminal window from the as0 assembler should look this:
 ```
 <system>:~/motorola-6800-assembler/test$ ../bin/as0 used5.asm -l cre c s
 0001                               *
@@ -95,6 +95,17 @@ mnptr      e419 *0015 0031
 put        f0bb *0016 0032 
 ```
 
+The as0 assembler produces the S-recored output file used5.s19.  This file is written to the ./test directory.  A listing the test directory should look like this:
+
+```
+<system>:~/motorola-6800-assembler/test$ ls -al
+total 20
+drwxrwxr-x 2 jim jim 4096 May 29 07:53 .
+drwxrwxr-x 8 jim jim 4096 May 29 07:53 ..
+-rw-rw-r-- 1 jim jim  657 May 26 18:56 help.asm
+-rw-rw-r-- 1 jim jim  778 May 26 18:56 used5.asm
+-rw-rw-r-- 1 jim jim  109 May 29 07:53 used5.s19
+```
 
 ## Documentation
 
