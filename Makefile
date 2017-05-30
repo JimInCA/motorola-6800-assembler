@@ -28,7 +28,8 @@ OBJ       += $(OBJDIR)/util.o $(OBJDIR)/ffwd.o $(OBJDIR)/output.o $(OBJDIR)/pseu
 OBJ       += $(OBJDIR)/globals.o
 DIRS      := $(OBJDIR) $(BINDIR)
 
-all: directories $(BINDIR)/$(APP)0 $(BINDIR)/$(APP)1 $(BINDIR)/$(APP)4 $(BINDIR)/$(APP)5 $(BINDIR)/$(APP)9 $(BINDIR)/$(APP)11
+.PHONEY: all
+all: directories as0 as1 as4 as5 as9 as11
 
 as0: directories $(BINDIR)/$(APP)0
 
@@ -42,6 +43,7 @@ as9: directories $(BINDIR)/$(APP)9
 
 as11: directories $(BINDIR)/$(APP)11
 
+.PHONEY: directories
 directories: $(DIRS)
 
 $(OBJDIR):
@@ -78,10 +80,12 @@ $(BINDIR)/$(APP)11: $(OBJ) $(OBJ_as11)
 	$(LINKER) $@ $^ $(CFLAGS)
 	@echo "Linking "$@" complete!"
 
+.PHONEY: clean
 clean:
 	$(RM) $(OBJDIR)/*.o
 	@echo "Derived objects removed!"
 
+.PHONEY: realclean
 realclean: clean
 	@$(RM) $(BINDIR)/* $(TESTDIR)/*.s19
 	@$(RMDIR) $(OBJDIR)
