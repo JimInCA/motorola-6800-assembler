@@ -2,19 +2,19 @@
 
 This repository contains the source code to build the Motorola Cross Assemblers for their 6800 family of 8bit processors.  This code was originally published in 1984 and then ported to the IBM PC and republished in 1987.  I want to give full credit to those you developed this code and my full respect for their work.
 
-My intent is to keep the source code as close to the original as possible.  The original source code was written in pre-ANSI C, so it required some editing to bring it up the ANSI C standard.  It was also designed to have one main c file that included the correct *.h and *.c files to build the assemblers for the different processors in the 6800 family.  I updated this to build each module into its own object file and then directed the linker to include the appropriate object files for the different processors.  I also added a directory structure where the source code is kept in the ./src directory, object files are placed in the ./obj directory, and binary files are place in the ./bin directory.
+My intent is to keep the source code as close to the original as possible.  The original source code was written in pre-ANSI C, so it required some editing to bring it up the ANSI C standard.  It was also designed to have one main c file that included the correct *.h and *.c files to build the assemblers for the different microprocessors in the 6800 family.  I updated this to build each module into its own object file and then directed the linker to include the appropriate object files for the different assemblers for the various microprocessors.  I also added a directory structure where the source code is kept in the ./src directory, object files are placed in the ./obj directory, and binary files are place in the ./bin directory.
 
 The code was ported to Linux and builds using the gcc compiler.
 
-This module will build the following binaries for the specified Motorola processors:
+This module will build the following binaries for the specified Motorola microprocessors:
 
 ```
-- as0   6800/6802 processors
-- as1   6801 processor
-- as4   6804 processor
-- as5   6805 processor
-- as9   6809 processor
-- as11  68HC11 processor
+./bin/as0   6800/6802 processors
+./bin/as1   6801 processor
+./bin/as4   6804 processor
+./bin/as5   6805 processor
+./bin/as9   6809 processor
+./bin/as11  68HC11 processor
 ```
 
 ## Compiling The Source Code
@@ -108,13 +108,13 @@ drwxrwxr-x 8 jim jim 4096 May 29 07:53 ..
 -rw-rw-r-- 1 jim jim  109 May 29 07:53 used5.s19
 ```
 
-The first example, used5.asm, was written using only lower case characters and no tabs.  As a further test of the assembler, test case help.asm was written using only upper case characters along with tabs to set the spacing between the lable, operator, operand, and comment fields.  You can assemble help.asm with the following command:
+The first example, used5.asm, was written using only lower case characters and no tabs.  As a further test of the assembler, test case help.asm was written using only upper case characters along with tabs to set the spacing between the label, operator, operand, and comment fields.  You can assemble help.asm with the following command:
 
 ```
 ../bin/as0 help.asm -L CRE C S
 ```
 
-This will produce the following output to the terminal window along with the help.s19 file being written to the ./test directory. 
+This will produce the following output to the terminal window along with the help.s19 file being written to the ./test directory:
 
 ```
 <system>:~/motorola-6800-assembler/test$ ../bin/as0 help.asm -L CRE C S
