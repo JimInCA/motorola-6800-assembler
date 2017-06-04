@@ -108,6 +108,59 @@ drwxrwxr-x 8 jim jim 4096 May 29 07:53 ..
 -rw-rw-r-- 1 jim jim  109 May 29 07:53 used5.s19
 ```
 
+The first example, used5.asm, was written using only lower case characters and no tabs.  As a further test of the assembler, test case help.asm was written using only upper case characters along with tabs to set the spacing between the lable, operator, operand, and comment fields.  You can assemble help.asm with the following command:
+
+```
+../bin/as0 help.asm -L CRE C S
+```
+
+This will produce the following output to the terminal window along with the help.s19 file being written to the ./test directory. 
+
+```
+<system>:~/motorola-6800-assembler/test$ ../bin/as0 help.asm -L CRE C S
+0001                               *
+0002                               *	Copied from:
+0003                               *	MEK6802D5 Microcomputer Evaluation Board User's Manual
+0004                               *	Page 3-10
+0005                               *
+0006                               *	Assemble with the following command:
+0007                               * 	as0 help.asm -L CRE C S
+0008                               *
+0009                               	NAM	HELP
+0010                               *	Options set in file override command line option settings.
+0011                               *	OPT	c		* options must be in lower case
+0012                               *	OPT	cre		* one option per line
+0013 0000                          	ORG	$0
+0014                               * D5 DEBUT ROUTINES
+0015 f0a2                          DIDDLE	EQU	$F0A2
+0016 e41d                          DISBUF	EQU	$E41D
+0017 e419                          MNPTR	EQU	$E419
+0018 f0bb                          PUT	EQU	$F0BB
+0019                               *
+0020                               *
+0021 0000 ce 76 79           [ 3 ] BEG	LDX	#$7679		"HE"
+0022 0003 ff e4 1d           [ 6 ] 	STX	DISBUF		STORE TO FIRST 2 DISPLAYS
+0023 0006 ce 38 73           [ 3 ] 	LDX	#$3873		"LP"
+0024 0009 ff e4 1f           [ 6 ] 	STX	DISBUF+2
+0025 000c ce 40 40           [ 3 ] 	LDX	#$4040		"--"
+0026 000f ff e4 21           [ 6 ] 	STX	DISBUF+4	STORE THE LAST 2 DISPLAY
+0027 0012 ce f0 a2           [ 3 ] 	LDX	#DIDDLE		ADDR OF DIDDLE ROUTINE
+0028 0015 ff e4 19           [ 6 ] 	STX	MNPTR		ESTABLISH AS ACTIVE SUB OF PUT
+0029 0018 7e f0 bb           [ 3 ] 	JMP	PUT		CALL DISPLAY ROUTINE
+
+BEG        0000
+DIDDLE     f0a2
+DISBUF     e41d
+MNPTR      e419
+PUT        f0bb
+
+BEG        0000 *0021 
+DIDDLE     f0a2 *0015 0027 
+DISBUF     e41d *0016 0022 0024 0026 
+MNPTR      e419 *0017 0028 
+PUT        f0bb *0018 0029 
+```
+
 ## Documentation
 
 I've included two files in the ./documentation directory.  File `assembler.txt` is the original documentation included with the sources for the assemblers.  The other file, `motorola_cross_asm_manual.pdf` is a manual for the Motorola assemblers that was published in 1990.  The information in this second file is not absolutely consistent with the assemblers used here, but it seems to be close and is a much more complete document than the text file.  So use at your own discretion.
