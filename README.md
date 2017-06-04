@@ -66,21 +66,21 @@ Using the above command, the output to the terminal window from the as0 assemble
 0015 e419                          mnptr   equ     $e419
 0016 f0bb                          put     equ     $f0bb
 0017                               *
-0018 0000 86 3e              [ 2 ] beg     ldaa    #$3e
-0019 0002 b7 e4 1d           [ 5 ]         staa    disbuf
-0020 0005 86 6d              [ 2 ]         ldaa    #$6d
+0018 0000 86 3e              [ 2 ] beg     ldaa    #$3e     "U"
+0019 0002 b7 e4 1d           [ 5 ]         staa    disbuf   store to first display
+0020 0005 86 6d              [ 2 ]         ldaa    #$6d     "S"
 0021 0007 b7 e4 1e           [ 5 ]         staa    disbuf+1
-0022 000a 86 79              [ 2 ]         ldaa    #$79
+0022 000a 86 79              [ 2 ]         ldaa    #$79     "E"
 0023 000c b7 e4 1f           [ 5 ]         staa    disbuf+2
-0024 000f 86 00              [ 2 ]         ldaa    #$00
+0024 000f 86 00              [ 2 ]         ldaa    #$00     blank
 0025 0011 b7 e4 20           [ 5 ]         staa    disbuf+3
-0026 0014 86 5e              [ 2 ]         ldaa    #$5e
+0026 0014 86 5e              [ 2 ]         ldaa    #$5e     "D"
 0027 0016 b7 e4 21           [ 5 ]         staa    disbuf+4
-0028 0019 86 6d              [ 2 ]         ldaa    #$6d
-0029 001b b7 e4 22           [ 5 ]         staa    disbuf+5
-0030 001e 86 a2              [ 2 ]         ldaa    #diddle
-0031 0020 ff e4 19           [ 6 ]         stx     mnptr
-0032 0023 7e f0 bb           [ 3 ]         jmp     put
+0028 0019 86 6d              [ 2 ]         ldaa    #$6d     "5"
+0029 001b b7 e4 22           [ 5 ]         staa    disbuf+5 store to last display
+0030 001e 86 a2              [ 2 ]         ldaa    #diddle  adder of diddle routine
+0031 0020 ff e4 19           [ 6 ]         stx     mnptr    establish as active sub of "PUT"
+0032 0023 7e f0 bb           [ 3 ]         jmp     put      call display routine
 0033                                       end
 
 beg        0000

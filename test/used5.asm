@@ -15,19 +15,19 @@ diddle  equ     $f0a2
 mnptr   equ     $e419
 put     equ     $f0bb
 *
-beg     ldaa    #$3e
-        staa    disbuf
-        ldaa    #$6d
+beg     ldaa    #$3e     "U"
+        staa    disbuf   store to first display
+        ldaa    #$6d     "S"
         staa    disbuf+1
-        ldaa    #$79
+        ldaa    #$79     "E"
         staa    disbuf+2
-        ldaa    #$00
+        ldaa    #$00     blank
         staa    disbuf+3
-        ldaa    #$5e
+        ldaa    #$5e     "D"
         staa    disbuf+4
-        ldaa    #$6d
-        staa    disbuf+5
-        ldaa    #diddle
-        stx     mnptr
-        jmp     put
+        ldaa    #$6d     "5"
+        staa    disbuf+5 store to last display
+        ldaa    #diddle  adder of diddle routine
+        stx     mnptr    establish as active sub of "PUT"
+        jmp     put      call display routine
         end
