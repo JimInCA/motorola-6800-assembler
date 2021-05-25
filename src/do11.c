@@ -179,6 +179,7 @@ static int bitop(int op, int mode, int class)
 		return(op-12);
 	else
 		fatal("bitop");
+	return 0;
 }
 
 /*
