@@ -41,7 +41,7 @@ make realclean
 
 ## Testing Your Binary
 
-I've included a few programs written using the Motorola 6800 syntax.  The programs are examples from the MEK6802D5 Microcomputer Evaluation Board User's Manual.  The code is almost identical to the code in the book with the exception of the opt pre-assembler directive and the addition of a few comments of mine.  These programs are included in the ./test directory and can be used to verify the functionality of the assembler binaries.  A simple procedure follows that you can use to test the assemblers:
+I've included a few programs written using the Motorola 6800 syntax.  The programs are examples from the [MEK6802D5 Microcomputer Evaluation Board User's Manual](https://github.com/JimInCA/cassette-tape-emulator/blob/main/doc/mek6802d5.pdf).  The code is almost identical to the code in the book with the exception of the opt pre-assembler directive and the addition of a few comments of mine.  These programs are included in the ./test directory and can be used to verify the functionality of the assembler binaries.  A simple procedure follows that you can use to test the assemblers:
 ```
 cd ./test
 ../bin/as0 used5.asm -l cre c s
