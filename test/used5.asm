@@ -27,7 +27,7 @@ beg     ldaa    #$3e     "U"
         staa    disbuf+4
         ldaa    #$6d     "5"
         staa    disbuf+5 store to last display
-        ldaa    #diddle  adder of diddle routine
+        ldx     #diddle  adder of diddle routine
         stx     mnptr    establish as active sub of "PUT"
         jmp     put      call display routine
         end

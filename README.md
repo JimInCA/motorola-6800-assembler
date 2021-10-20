@@ -50,12 +50,12 @@ Using the above command, the output to the terminal window from the as0 assemble
 ```
 <system>:~/motorola-6800-assembler/test$ ../bin/as0 used5.asm -l cre c s
 0001                               *
-0002                               *	    Copied from:
-0003                               *	    MEK6802D5 Microcomputer Evaluation Board User's Manual
-0004                               *	    Page 3-8
+0002                               *        Copied from:
+0003                               *        MEK6802D5 Microcomputer Evaluation Board User's Manual
+0004                               *        Page 3-8
 0005                               *
-0006                               *	    Assemble with the following command:
-0007                               *		as0 used5.asm -l cre c s
+0006                               *        Assemble with the following command:
+0007                               *            as0 used5.asm -l cre c s
 0008                               *
 0009                                       nam     used5
 0010                               *       Options set in file override command line option settings
@@ -78,9 +78,9 @@ Using the above command, the output to the terminal window from the as0 assemble
 0027 0016 b7 e4 21           [ 5 ]         staa    disbuf+4
 0028 0019 86 6d              [ 2 ]         ldaa    #$6d     "5"
 0029 001b b7 e4 22           [ 5 ]         staa    disbuf+5 store to last display
-0030 001e 86 a2              [ 2 ]         ldaa    #diddle  adder of diddle routine
-0031 0020 ff e4 19           [ 6 ]         stx     mnptr    establish as active sub of "PUT"
-0032 0023 7e f0 bb           [ 3 ]         jmp     put      call display routine
+0030 001e ce f0 a2           [ 3 ]         ldx     #diddle  adder of diddle routine
+0031 0021 ff e4 19           [ 6 ]         stx     mnptr    establish as active sub of "PUT"
+0032 0024 7e f0 bb           [ 3 ]         jmp     put      call display routine
 0033                                       end
 
 beg        0000
@@ -89,10 +89,10 @@ disbuf     e41d
 mnptr      e419
 put        f0bb
 
-beg        0000 *0018 
-diddle     f0a2 *0014 0030 
-disbuf     e41d *0013 0019 0021 0023 0025 0027 0029 
-mnptr      e419 *0015 0031 
+beg        0000 *0018
+diddle     f0a2 *0014 0030
+disbuf     e41d *0013 0019 0021 0023 0025 0027 0029
+mnptr      e419 *0015 0031
 put        f0bb *0016 0032 
 ```
 
